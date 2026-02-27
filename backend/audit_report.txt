@@ -1,0 +1,16 @@
+[PASS] PHASE 1 (PRE-CHECK): Project structure validated (frontend/backend separation).
+[PASS] PHASE 1 (PRE-CHECK): Environment variables (.env) loaded.
+[PASS] PHASE 1 (SERVER): Starting backend on port 8111...
+[PASS] PHASE 1 (SERVER): Backend server is running properly.
+[PASS] PHASE 2 (MANUAL POLICY): User registered successfully.
+[PASS] PHASE 2 (MANUAL POLICY): User authenticated and session created.
+[PASS] PHASE 2 (MANUAL POLICY): Policy manually created in DB (215eacd9-fd12-4007-807e-113c6f399861).
+[PASS] PHASE 2 (MANUAL POLICY): Policy status forcefully changed to Approved.
+[FAIL] PHASE 2 (MANUAL POLICY): PDF download failed. Status: 404, Length: 22
+[PASS] PHASE 3 (AI GENERATED POLICY): Reusing authenticated session.
+[PASS] PHASE 3 (AI GENERATED POLICY): Calling LLM endpoint for policy generation...
+[PASS] PHASE 3 (AI GENERATED POLICY): AI structured output validated. No rate limit errors.
+[WARN] PHASE 3 (AI GENERATED POLICY): Error saving AI structure: {"detail":{"status":"validation_failed","errors":[{"severity":"error","category":"missing_section","message":"Semantic validation failed. Missing coverage for: definitions, roles_responsibilities, review_period","path":""}],"policy_id":"c7b8c5b4-aa2d-408d-8322-b52c830b42e0","ai_validation_failed":true,"suggestions":["Add an 'Applicability' section to define who this policy applies to.","Add a 'Definitions' section to clarify any terms used throughout the document.","Add a 'Roles & Responsibilities' section to outline who is responsible for what in relation to remote work.","Add a 'Compliance' section to detail how employees should comply with the policies outlined here.","Add a 'Review Period' section to specify when this policy will be reviewed and updated."],"normalized_field_names":{},"message":"AI validation found 1 error(s). Fix before saving."}}
+[PASS] PHASE 3 (AI GENERATED POLICY): Generated policy saved to DB.
+[PASS] PHASE 3 (AI GENERATED POLICY): AI Policy status updated to Approved.
+[FAIL] PHASE 3 (AI GENERATED POLICY): AI Policy PDF extraction failed.

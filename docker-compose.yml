@@ -1,0 +1,50 @@
+# ─────────────────────────────────────────────────────────────
+# BaikalSphere Policy Engine — Database Services (Docker)
+# Only PostgreSQL + MongoDB. Backend/Frontend run locally.
+# ─────────────────────────────────────────────────────────────
+version: "3.9"
+
+services:
+  # ── PostgreSQL 15 ──
+  postgres:
+    image: postgres:15-alpine
+    container_name: baikal_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: baikal_user
+      POSTGRES_PASSWORD: baikal_pass_2026
+      POSTGRES_DB: policy_engine
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U baikal_user -d policy_engine"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── MongoDB 7 ──
+  mongo:
+    image: mongo:7
+    container_name: baikal_mongo
+    restart: unless-stopped
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: baikal_user
+      MONGO_INITDB_ROOT_PASSWORD: baikal_pass_2026
+      MONGO_INITDB_DATABASE: policy_engine
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodata:/data/db
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:
+    name: baikal_pgdata
+  mongodata:
+    name: baikal_mongodata

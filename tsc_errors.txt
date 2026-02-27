@@ -1,0 +1,42 @@
+﻿node.exe : 
+(node:37852) 
+ExperimentalWarning: 
+CommonJS module 
+C:\Program Files\node
+js\node_modules\npm\n
+ode_modules\debug\src
+\node.js is loading 
+ES Module C:\Program 
+Files\nodejs\node_mod
+ules\npm\node_modules
+\supports-color\index
+.js using require().
+At C:\Program Files\n
+odejs\npx.ps1:29 
+char:3
++   & $NODE_EXE 
+$NPX_CLI_JS $args
++   ~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~
+    + CategoryInfo   
+           : NotSpe  
+  cified: ((node:3   
+ 7852) Ex...sing     
+require().:Strin    
+g) [], RemoteExc    
+eption
+    + FullyQualified 
+   ErrorId : Native  
+  CommandError
+ 
+Support for loading 
+ES Module in 
+require() is an 
+experimental feature 
+and might change at 
+any time
+(Use `node 
+--trace-warnings 
+...` to show where 
+the warning was 
+created)

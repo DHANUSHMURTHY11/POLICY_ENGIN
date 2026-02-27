@@ -1,0 +1,24 @@
+{
+    "Module Status": {
+        "Structure Builder": "PASS (Graceful Rejection)",
+        "AI Assistant": "PASS",
+        "Workflow Engine": "FAIL",
+        "Version Control": "FAIL",
+        "Audit System": "PASS",
+        "Runtime Engine": "PASS (Graceful Block)"
+    },
+    "Critical Failures": [],
+    "Minor Issues": [
+        "Word formatting/generation error",
+        "No workflow templates found, skipping"
+    ],
+    "Missing Governance Controls": [],
+    "AI Integrity Status": "PASS (ollama - qwen2.5:3b)",
+    "Security Gaps": [
+        "/policies allows unsigned access (returned 403)"
+    ],
+    "Production Readiness Score (0-100)": 85,
+    "manual_save_time": 41.18617640004959,
+    "doc_gen_time": 0.007853600080125034,
+    "runtime_query_time": 0.07522500003688037
+}

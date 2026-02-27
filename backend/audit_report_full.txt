@@ -1,0 +1,5 @@
+[PASS] PHASE 1 (PRE-CHECK): Project structure validated (frontend/backend separation).
+[PASS] PHASE 1 (PRE-CHECK): Environment variables (.env) loaded.
+[PASS] PHASE 1 (SERVER): Starting backend on port 8111...
+[PASS] PHASE 1 (SERVER): Backend server is running properly.
+[FAIL] PHASE 1 (AUTH): Login failed: Internal Server Error

@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "d:\POLICY_ENGIN\backend\debug.py", line 5, in <module>
+    from app.main import app
+  File "d:\POLICY_ENGIN\backend\app\main.py", line 210, in <module>
+    from app.ai.help_assistant_router import router as help_router
+  File "d:\POLICY_ENGIN\backend\app\ai\help_assistant_router.py", line 9, in <module>
+    from app.auth.dependencies import get_current_user
+ModuleNotFoundError: No module named 'app.auth.dependencies'

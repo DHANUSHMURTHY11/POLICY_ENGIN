@@ -1,0 +1,173 @@
+﻿
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  BaikalSphere Policy Engine ΓÇö QA Test Runner
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+  This script will test the ENTIRE policy lifecycle:
+  
+  Part 1: System Startup Check
+  Part 2: Car Loan Policy Full Flow
+  Part 3: Education Loan Policy Full Flow
+  Part 4: Strict AI Mode Validation
+
+  Prerequisites:
+  ΓÇó Backend running: python -m uvicorn app.main:app --reload --port 8000
+  ΓÇó Frontend running: npm run dev (in frontend folder)
+  ΓÇó PostgreSQL & MongoDB running
+  ΓÇó Ollama running with qwen2.5:7b-instruct-q4_K_M
+    
+
+  ΓÅ╕ [AUTO] Press ENTER to start testing...
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  PART 1 ΓÇö SYSTEM STARTUP CHECK
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+Γû╢ Step 1.1 ΓÇö Check Backend is Running
+  Γä╣ Calling GET http://localhost:8000/ ...
+  Γä╣ GET / ΓåÆ 200
+  Γ£à Backend running: BaikalSphere Policy Engine
+  Γ£à AI Provider: ollama | Model: qwen2.5:3b
+
+Γû╢ Step 1.2 ΓÇö Check Frontend is Running
+  Γä╣ Checking http://localhost:3000 ...
+  Γ¥î Frontend not reachable. Start it with: npm run dev (in frontend folder)
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  PART 2 ΓÇö CAR LOAN POLICY FULL FLOW
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+Γû╢ Step 2.1 ΓÇö Login as Admin
+  Γä╣ Logging in with: admin@baikalsphere.com / Admin@123
+  Γä╣ POST /api/auth/login ΓåÆ 200
+  Γ£à Logged in as: Admin User (role: admin)
+  Γä╣ Token: eyJhbGciOiJIUzI1NiIsInR5cCI6Ik...
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 2.2 ΓÇö Fetch Available Roles for Workflow Template
+  Γä╣ Getting roles from GET /api/workflow/roles ...
+  Γä╣ GET /api/workflow/roles ΓåÆ 200
+  Γ£à Found 4 roles:
+    ΓÇó Admin (id: 50b136f0-8fa1-4ba5-a8ab-0293d13387ca)
+    ΓÇó Administrator (id: 3f7c8d9a-887e-429f-9433-d85b97b2a0d2)
+    ΓÇó admin (id: 7dad4be1-b9b4-48a5-8aec-3954b6e82fec)
+    ΓÇó policy_manager (id: a9e79848-3162-4dba-b40b-8380ae5cf20d)
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 2.3 ΓÇö Create Workflow Template Using AI (Natural Language)
+  Γä╣ Sending description: "policy_manager reviews and approves the policy"
+  Γä╣ API: POST /api/workflow/templates/natural
+  Γä╣ Waiting for AI response (may take 5-15 seconds)...
+  Γä╣ POST /api/workflow/templates/natural ΓåÆ 400
+  Γ¥î Template creation failed:
+    {
+      "detail": "'Role' object is not subscriptable"
+    }
+  Γä╣ If rate limited, wait 60 seconds and re-run.
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 2.4 ΓÇö Register Policy Manager User
+  Γä╣ Registering: manager@test.com
+  Γä╣ POST /api/auth/register ΓåÆ 409
+  Γä╣ Already exists or error: Email already registered
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 2.5 ΓÇö Login as Policy Manager
+  Γä╣ POST /api/auth/login ΓåÆ 200
+  Γ£à Logged in as manager: Policy Manager
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 2.6 ΓÇö Create Car Loan Policy
+  Γä╣ Creating policy: 'Car Loan Policy 2026'
+  Γä╣ POST /api/policies ΓåÆ 201
+  Γ£à Policy created!
+  Γ£à   ID: 8cd50b9d-77f2-4c76-98cf-85b2b8491d90
+  Γ£à   Status: draft
+  Γ£à   Version: 1
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 2.7 ΓÇö Generate AI Structure for Car Loan Policy
+  Γä╣ Prompt: "Create a car loan policy with eligibility criteria including minimum age 21, max..."
+  Γä╣ API: POST /api/policies/<id>/structure/ai
+  Γä╣ Waiting for AI to generate structure (10-30 seconds)...
+  Γä╣ POST /api/policies/8cd50b9d-77f2-4c76-98cf-85b2b8491d90/structure/ai ΓåÆ 200
+  Γ£à AI generated 3 sections:
+    ≡ƒôü Eligibility Criteria (3 subsections, 4 fields)
+    ≡ƒôü Loan Parameters (3 subsections, 3 fields)
+    ≡ƒôü Insurance and Collateral Requirements (2 subsections, 3 fields)
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 2.8 ΓÇö Submit Car Loan Policy for Approval
+  Γä╣ No workflow template found. Skipping approval flow.
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  PART 3 ΓÇö EDUCATION LOAN POLICY FLOW
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+Γû╢ Step 3.1 ΓÇö Create Education Loan Policy
+  Γä╣ POST /api/policies ΓåÆ 201
+  Γ£à Policy created: bcec122e-1afe-451f-a617-b8bc782c67bf
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 3.2 ΓÇö Generate AI Structure for Education Loan
+  Γä╣ Prompt: "Create education loan policy for domestic students with: Co-applicant mandatory,..."
+  Γä╣ Waiting for AI...
+  Γä╣ POST /api/policies/bcec122e-1afe-451f-a617-b8bc782c67bf/structure/ai ΓåÆ 503
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 3.3 ΓÇö Submit & Approve Education Loan Policy
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+Γû╢ Step 3.4 ΓÇö Runtime Query ΓÇö Education Loan
+  Γä╣ POST /api/query/policies/bcec122e-1afe-451f-a617-b8bc782c67bf/query ΓåÆ 500
+  Γ£à Decision: ?
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  PART 4 ΓÇö STRICT AI MODE TESTS
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+Γû╢ Step 4.1 ΓÇö Test Document Generation on Draft Policy (Should FAIL)
+  Γä╣ Creating a draft policy and trying to generate a document...
+  Γä╣ POST /api/policies ΓåÆ 201
+  Γä╣ Draft policy: 95392076-9f80-44f5-be1a-cfaa85daddf9
+  Γ£à BLOCKED! Status 403 ΓÇö Document gen requires approval Γ£à
+
+Γû╢ Step 4.2 ΓÇö Verify AI Audit Logs Exist
+  Γä╣ Checking GET / for AI provider info...
+  Γä╣ GET / ΓåÆ 200
+  Γ£à Provider: ollama | Model: qwen2.5:3b
+  Γä╣ Check MongoDB for audit logs: db.llm_audit_log.find().sort({timestamp:-1}).limit(5)
+
+  ΓÅ╕ [AUTO] Press ENTER to continue...
+
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+  ALL TESTS COMPLETE
+ΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉΓòÉ
+
+  Summary of IDs (for database verification):
+  ΓÇó Admin Token:     eyJhbGciOiJIUzI1NiIsInR5cCI6Ik...
+  ΓÇó Template ID:     N/A
+  ΓÇó Car Policy ID:   8cd50b9d-77f2-4c76-98cf-85b2b8491d90
+  ΓÇó Edu Policy ID:   bcec122e-1afe-451f-a617-b8bc782c67bf
+  
+  Database verification queries:
+  PostgreSQL: SELECT id, name, status FROM policy_metadata;
+  MongoDB:    db.policy_documents.find({}, {policy_id:1})
+  Audit:      db.llm_audit_log.countDocuments()
+    
